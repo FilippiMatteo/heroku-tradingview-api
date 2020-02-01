@@ -1,0 +1,7 @@
+{
+  "/api/*": {
+    "target": "https://api.cryptowat.ch",
+    "secure": false,
+    "logLevel": "debug"
+  }
+}
