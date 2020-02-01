@@ -26,6 +26,12 @@ export class ChartComponent implements OnInit {
     {time: 'okcoin', label: 'okcoin'},
     {time: 'huobi', label: 'huobi'},
   ];
+  currency = [
+    {label: 'Bitcoin/USD', value: 'btcusd'},
+    {label: 'Bitcoin/EUR', value: 'btceur'},
+    {label: 'Bitcoin/USD futures', value: 'btcusd-monthly-futures'},
+
+  ];
 
   timeCandlesStick = [
     {time: '1800', label: '30m'},
@@ -47,7 +53,7 @@ export class ChartComponent implements OnInit {
 
   get_call() {
     // tslint:disable-next-line:max-line-length
-    const url = `https://cryptowatch-server-api.herokuapp.com/api?market=${this.selectedMarket}&currency=btcusd&timeFrame=${this.selectedTimeFrame}`;
+    const url = `https://cryptowatch-server-api.herokuapp.com/api?market=${this.selectedMarket}&currency=${this.selectedCurrency}&timeFrame=${this.selectedTimeFrame}`;
     // const url = 'https://api.cryptowat.ch/markets/kraken/btcusd/ohlc?periods=3600&after=1577836800';
     return this.httpClient.get(url)
       .map(x => {
@@ -179,37 +185,37 @@ export class ChartComponent implements OnInit {
 
   selectMarketHandler(event: any) {
     this.selectedMarket = event.target.value;
-    console.log('selected' + event.target.value);
-    this.literalBars = [];
-    this.volumes = [];
     // @ts-ignore
     this.get_call().subscribe(x => {
-      this.chart.timeScale().resetTimeScale();
-      this.chart.timeScale().scrollPosition();
-      this.chart.timeScale().fitContent();
-      this.candleSeries.setData([]);
-      this.volumeSeries.setData([]);
-      this.candleSeries.setData(this.literalBars);
-      this.volumeSeries.setData(this.volumes);
+      this.resetchart();
     });
+  }
 
+  selectCurrencyHandler(event: any) {
+    this.selectedCurrency = event.target.value;
+    // @ts-ignore
+    this.get_call().subscribe(x => {
+      this.resetchart();
+    });
   }
 
   selectTimeHandler(event: any) {
     this.selectedTimeFrame = event.target.value;
-    console.log('selected' + event.target.value);
-    this.literalBars = [];
-    this.volumes = [];
     // @ts-ignore
     this.get_call().subscribe(x => {
-      this.chart.timeScale().resetTimeScale();
-      this.chart.timeScale().scrollPosition();
-      this.chart.timeScale().fitContent();
-      this.candleSeries.setData([]);
-      this.volumeSeries.setData([]);
-      this.candleSeries.setData(this.literalBars);
-      this.volumeSeries.setData(this.volumes);
+      this.resetchart();
     });
+  }
 
+  resetchart() {
+    this.literalBars = [];
+    this.volumes = [];
+    this.chart.timeScale().resetTimeScale();
+    this.chart.timeScale().scrollPosition();
+    this.chart.timeScale().fitContent();
+    this.candleSeries.setData([]);
+    this.volumeSeries.setData([]);
+    this.candleSeries.setData(this.literalBars);
+    this.volumeSeries.setData(this.volumes);
   }
 }
