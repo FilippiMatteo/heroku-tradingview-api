@@ -11,7 +11,7 @@
   <div class="col-4">
     <span> Seleziona Currency Pairs </span>
     <select  id="currency"  (change)="selectCurrencyHandler($event)">
-      <option *ngFor="let item of currency; let i = index" [value]="currency[i].time">
+      <option *ngFor="let item of currency; let i = index" [value]="currency[i].value">
         {{currency[i].label}}
       </option>
     </select>

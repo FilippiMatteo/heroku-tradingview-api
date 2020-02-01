@@ -45,6 +45,7 @@ export class ChartComponent implements OnInit {
   // default value
   selectedTimeFrame = '1800';
   selectedMarket = 'kraken';
+  selectedCurrency = 'btcusd';
 
   chart;
   candleSeries;
