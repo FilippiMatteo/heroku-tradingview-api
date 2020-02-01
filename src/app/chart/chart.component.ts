@@ -186,6 +186,8 @@ export class ChartComponent implements OnInit {
 
   selectMarketHandler(event: any) {
     this.selectedMarket = event.target.value;
+    this.literalBars = [];
+    this.volumes = [];
     // @ts-ignore
     this.get_call().subscribe(x => {
       this.resetchart();
@@ -194,6 +196,8 @@ export class ChartComponent implements OnInit {
 
   selectCurrencyHandler(event: any) {
     this.selectedCurrency = event.target.value;
+    this.literalBars = [];
+    this.volumes = [];
     // @ts-ignore
     this.get_call().subscribe(x => {
       this.resetchart();
@@ -202,6 +206,8 @@ export class ChartComponent implements OnInit {
 
   selectTimeHandler(event: any) {
     this.selectedTimeFrame = event.target.value;
+    this.literalBars = [];
+    this.volumes = [];
     // @ts-ignore
     this.get_call().subscribe(x => {
       this.resetchart();
@@ -209,8 +215,7 @@ export class ChartComponent implements OnInit {
   }
 
   resetchart() {
-    this.literalBars = [];
-    this.volumes = [];
+
     this.chart.timeScale().resetTimeScale();
     this.chart.timeScale().scrollPosition();
     this.chart.timeScale().fitContent();
