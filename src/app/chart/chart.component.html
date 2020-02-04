@@ -1,32 +1,31 @@
-<div class="row">
-  <h1> Cryptowatch API</h1>
-  <div class="col-4">
-    <span> Seleziona market </span>
-    <select  id="market"  (change)="selectMarketHandler($event)">
-      <option *ngFor="let item of market; let i = index" [value]="market[i].time">
-        {{market[i].label}}
-      </option>
-    </select>
-  </div>
-  <div class="col-4">
-    <span> Seleziona Currency Pairs </span>
-    <select  id="currency"  (change)="selectCurrencyHandler($event)">
-      <option *ngFor="let item of currency; let i = index" [value]="currency[i].value">
-        {{currency[i].label}}
-      </option>
-    </select>
-  </div>
+<div class="padding-20">
+  <div class="row">
+    <div class="col-4">
+      <select id="market" (change)="selectMarketHandler($event)">
+        <option *ngFor="let item of market; let i = index" [value]="market[i].time">
+          {{market[i].label}}
+        </option>
+      </select>
+    </div>
+    <div class="col-4">
+      <select id="currency" (change)="selectCurrencyHandler($event)">
+        <option *ngFor="let item of currency; let i = index" [value]="currency[i].value">
+          {{currency[i].label}}
+        </option>
+      </select>
+    </div>
 
-  <div class="col-4">
-    <span>Seleziona Timeframe</span>
-    <select  id="timeCandlesStick"  (change)="selectTimeHandler($event)">
-      <option *ngFor="let item of timeCandlesStick; let i = index" [value]="timeCandlesStick[i].time">
-        {{timeCandlesStick[i].label}}
-      </option>
-    </select>
+    <div class="col-4">
+      <select id="timeCandlesStick" (change)="selectTimeHandler($event)">
+        <option *ngFor="let item of timeCandlesStick; let i = index" [value]="timeCandlesStick[i].time">
+          {{timeCandlesStick[i].label}}
+        </option>
+      </select>
+    </div>
   </div>
 </div>
 
 
-<div id="canvas"> </div>
+
+<div id="canvas"></div>
 

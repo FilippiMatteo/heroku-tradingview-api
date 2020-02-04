@@ -27,9 +27,14 @@ export class ChartComponent implements OnInit {
     {time: 'huobi', label: 'huobi'},
   ];
   currency = [
-    {label: 'Bitcoin/USD', value: 'btcusd'},
-    {label: 'Bitcoin/EUR', value: 'btceur'},
-    {label: 'Bitcoin/USD futures', value: 'btcusd-monthly-futures'},
+    {label: 'BTC/USD', value: 'btcusd'},
+    {label: 'BTC/EUR', value: 'btceur'},
+    {label: 'LTC/EUR', value: 'ltceur'},
+    {label: 'LTC/USD', value: 'ltcusd'},
+    {label: 'LTC/BTC', value: 'ltcbtc'},
+    {label: 'ETH/BTC', value: 'ethbtc'},
+    {label: 'ETH/USD', value: 'ethusd'},
+    {label: 'DGC/BTC', value: 'dogebtc'},
 
   ];
 
