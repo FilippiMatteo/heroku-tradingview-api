@@ -154,6 +154,7 @@ export class ChartComponent implements OnInit {
       priceScale: {
         borderColor: 'rgba(197, 203, 206, 0.8)',
         mode: PriceScaleMode.Logarithmic,
+        autoScale : true,
         scaleMargins: {
           top: 0.1,
           bottom: 0.1,
@@ -228,5 +229,9 @@ export class ChartComponent implements OnInit {
     this.volumeSeries.setData([]);
     this.candleSeries.setData(this.literalBars);
     this.volumeSeries.setData(this.volumes);
+    /*if (this.selectedCurrency.indexOf('btc') < 0 ) {
+      this.chart.priceScale.mode = PriceScaleMode.Normal;
+    } */
+
   }
 }
